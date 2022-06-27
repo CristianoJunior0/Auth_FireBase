@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { AuthEmailProvider } from "./contexts/authEmail";
+import { AuthGoogleProvider } from "./contexts/authGoogle";
+import { AuthFacebookProvider } from "./contexts/authFacebook";
+import { AppRoutes } from "./routes/routes";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthEmailProvider>
+      <AuthFacebookProvider>
+        <AuthGoogleProvider>
+          <AppRoutes /> 
+        </AuthGoogleProvider>
+      </AuthFacebookProvider>
+    </AuthEmailProvider>
   );
-}
-
-export default App;
+};
